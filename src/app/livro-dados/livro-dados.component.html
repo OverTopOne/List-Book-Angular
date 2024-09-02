@@ -1,0 +1,35 @@
+<main class="container mt-4">
+  <h1>Adicionar Livro</h1>
+  <form (ngSubmit)="incluir()" #livroForm="ngForm" novalidate>
+    <div class="mb-3">
+      <label for="titulo" class="form-label">Título</label>
+      <input type="text" id="titulo" class="form-control" [(ngModel)]="livro.titulo" name="titulo" required #titulo="ngModel">
+      <div *ngIf="titulo.invalid && titulo.touched" class="text-danger">
+        O título é obrigatório.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="resumo" class="form-label">Resumo</label>
+      <textarea id="resumo" class="form-control" [(ngModel)]="livro.resumo" name="resumo" required #resumo="ngModel"></textarea>
+      <div *ngIf="resumo.invalid && resumo.touched" class="text-danger">
+        O resumo é obrigatório.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="editora" class="form-label">Editora</label>
+      <input type="text" id="editora" class="form-control" [(ngModel)]="novaEditora" name="editora" required #editora="ngModel">
+      <button type="button" class="btn btn-secondary mt-2" (click)="adicionarEditora()">Adicionar Editora</button>
+      <div *ngIf="editora.invalid && editora.touched" class="text-danger">
+        A editora é obrigatória.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="autores" class="form-label">Autores</label>
+      <textarea id="autores" class="form-control" [(ngModel)]="autoresForm" name="autores" required #autores="ngModel"></textarea>
+      <div *ngIf="autores.invalid && autores.touched" class="text-danger">
+        Pelo menos um autor é obrigatório.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="livroForm.invalid">Adicionar Livro</button>
+  </form>
+</main>
